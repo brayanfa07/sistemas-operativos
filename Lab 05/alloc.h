@@ -7,12 +7,16 @@ static char *allocp = allocbuf; // siguiente posición libre
 
 
 char *alloc(int n) { // regresa un puntero a n caracteres
-	for (int i=0; i<1000; i++)
-		printf("%i\n",allocbuf[i]);
+	for (int i=0; i<1000; i++){
+		//printf("Printing allocbuf %i\n",allocbuf[i]);
+	}
 	printf("Numero allocsize %d\n", ALLOCSIZE);
 	printf("Numero allocp %d\n", *allocp);
 	if (allocbuf + ALLOCSIZE - allocp >= n) {
 		allocp += n;
+		printf("Print de N %d\n", n);
+		printf("Print de allocp 1 %d\n", *allocp);
+		printf("Print de allocp 2 (allocp - n) %d\n", *allocp -n);
 		return allocp -n;
 	} else
 		return 0;
