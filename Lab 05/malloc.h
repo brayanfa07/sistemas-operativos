@@ -1,4 +1,6 @@
 //malloc.h
+#include <stddef.h>
+#include "stdio.h"
 
 typedef long Align; //alineamiento al limite superior
 union header {	//Encabezado de bloque
@@ -32,7 +34,7 @@ void free(void *ap){
 		bp->s.ptr = p->s.ptr; //fusiona al bnr inferior
 	if(p + p->s.size == bp){
 		p->s.size += bp->s.size;
-		p->s.ptr = bp-s.ptr;
+		p->s.ptr = bp->s.ptr;
 	}else
 		p->s.ptr = bp;
 	freep = p;

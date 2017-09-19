@@ -1,5 +1,6 @@
 //ejercicio2.c
 
+#include "stdio.h"
 #include "malloc.h"
 int main() {
 	int* arreglo;
