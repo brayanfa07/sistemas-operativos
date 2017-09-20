@@ -6,6 +6,8 @@ int main() {
 	int* arreglo;
 	arreglo = (int*) malloc(sizeof(int)*10);
 
+	printf("Impresion de prueba");
+
 	for(int i = 0; i<10; i++){
 		arreglo[i] = 10*i;
 	}

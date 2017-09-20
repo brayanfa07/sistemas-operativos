@@ -65,6 +65,8 @@ void* malloc(unsigned long nbytes){
 	Header *morecore(unsigned);
 	unsigned nunits;
 
+	printf("Prueba de impresion del algoritmo");
+
 	nunits = (nbytes+sizeof(Header)-1) / sizeof(Header)+1;
 
 	if ((prevp = freep) == NULL){ //no hay lista libre
