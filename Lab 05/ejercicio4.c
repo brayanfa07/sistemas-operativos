@@ -1,7 +1,9 @@
 //ejercicio4.c
 
+#include "stdio.h"
 #include "malloc.h"
 int main() {
+	printf("Impresion de prueba \n");
 	int* arreglo;
 	arreglo = (int*) malloc(sizeof(int)*10);
 
@@ -15,7 +17,6 @@ int main() {
 
 	free((char*)arreglo);
 
-
 	arreglo = (int*)malloc(sizeof(int)*10);
 
 	for (int i = 0; i<10; i++){
@@ -25,4 +26,5 @@ int main() {
 	for(int i = 0; i<10; i++){
 		printf("%i\n",arreglo[i]);
 	}
+	
 }
