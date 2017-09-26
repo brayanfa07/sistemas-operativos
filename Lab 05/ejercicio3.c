@@ -1,7 +1,7 @@
 //ejercicio3.c
 
 #include "stdio.h"
-#include "malloc.h"
+#include "malloc3.h"
 int main() {
 	printf("Impresion de prueba \n");
 	int* arreglo;

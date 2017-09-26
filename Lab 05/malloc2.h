@@ -1,5 +1,5 @@
 //malloc.h
-#include <stddef.h>
+#include "stddef.h"
 #include "stdio.h"
 
 typedef long Align; //alineamiento al limite superior
@@ -66,7 +66,7 @@ void* malloc(unsigned long nbytes){
 	Header *prevp;
 	Header *morecore(unsigned);
 	unsigned nunits;
-
+	//printf("printing" );
 	nunits = (nbytes+sizeof(Header)-1) / sizeof(Header)+1;
 
 	if ((prevp = freep) == NULL){ //no hay lista libre
@@ -75,12 +75,16 @@ void* malloc(unsigned long nbytes){
 	}
 	for (p = prevp -> s.ptr;;prevp = p, p = p->s.ptr){
 		if (p-> s.size >= nunits){ //suficiente grande
-			if (p-> s.size == nunits) //exacto
+			if (p-> s.size == nunits){ //exacto
 				prevp->s.ptr = p->s.ptr;
+				//printf("Printing nunits %d\n", nunits);
+			}
 			else{
 				p->s.size -= nunits;
 				p += p->s.size;
 				p->s.size = nunits;
+				//printf("printing" );
+				//printf("Printing nunits %p\n", (void *) &nunits);
 			}
 			freep = prevp;
 			return (void *)(p+1);
