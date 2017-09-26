@@ -4,8 +4,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
-
-
 #include <dirent.h>
 #include <pwd.h>
 #include <grp.h>
@@ -27,6 +25,12 @@ int main() {
 	DIR *dirp = opendir(".");
 	struct dirent* dp;
 	char name[256];
+	struct tm *tm;
+	char datestring[256];
+
+
+
+
 
 
 
@@ -38,8 +42,9 @@ int main() {
 			if (stat(dp->d_name, &statbuf) == -1)
 				continue;
 
+			strftime(datestring, sizeof(datestring), nl_langinfo(D_T_FMT), tm);
 
-			printf("filename: %s | Size of the file: %9jd \n",dp->d_name, (intmax_t)statbuf.st_size);
+			printf("filename: %s\n | Size of the file: %9jd\n |Date: %s\n\n" ,dp->d_name, (intmax_t)statbuf.st_size, datestring);
 			if (strcmp(dp->d_name, name) == 0) {
 				closedir(dirp);
 				return FOUND;
