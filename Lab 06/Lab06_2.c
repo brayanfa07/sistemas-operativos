@@ -28,12 +28,6 @@ int main() {
 	struct tm *tm;
 	char datestring[256];
 
-
-
-
-
-
-
 	while (dirp) {
 		errno = 0;
 		if ((dp = readdir(dirp)) != NULL) {
@@ -42,7 +36,7 @@ int main() {
 			if (stat(dp->d_name, &statbuf) == -1)
 				continue;
 
-			strftime(datestring, sizeof(datestring), nl_langinfo(D_T_FMT), tm);
+			strftime(datestring, sizeof(datestring), nl_langinfo(D_T_FMT)
 
 			printf("filename: %s\n | Size of the file: %9jd\n |Date: %s\n\n" ,dp->d_name, (intmax_t)statbuf.st_size, datestring);
 			if (strcmp(dp->d_name, name) == 0) {
