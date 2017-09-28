@@ -8,11 +8,11 @@ int main (int argc, char* argv[]) {
 	char* file = argv[1];
 	int fd;
 	struct flock lock;
-	printf ("opening %s\n", file);
+	printf ("opening the file %s\n", file);
 	
 	/* Open a file descriptor to the file. */
 	fd = open (file, O_WRONLY);
-	printf ("locking\n");
+	printf ("locking file. Write\n");
 	
 	/* Initialize the flock structure. */
 	memset (&lock, 0, sizeof(lock));
@@ -20,11 +20,11 @@ int main (int argc, char* argv[]) {
 	
 	/* Place a write lock on the file. */
 	fcntl (fd, F_SETLKW, &lock);
-	printf ("locked; hit Enter to unlock... ");
+	printf ("Locked the file. Able to unlock ");
 	
 	/* Wait for the user to hit Enter. */
 	getchar ();
-	printf ("unlocking\n");
+	printf ("unlocking the file\n");
 	
 	/* Release the lock. */
 	lock.l_type = F_UNLCK;
